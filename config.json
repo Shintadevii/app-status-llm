@@ -1,0 +1,87 @@
+{
+  "model": "qwen/qwen3.8-27b",
+  "temperature": 0,
+  "max_tokens": 15,
+  "labels": [
+    "Aman",
+    "Waspada",
+    "Berisiko"
+  ],
+  "system_prompt": "Kamu adalah sistem klasifikasi status akademik mahasiswa yang sangat akurat.\nData: IPK (2,00-4,00), kehadiran kuliah (%), jam belajar mandiri per minggu, tugas terkumpul (%), nilai UTS (0-100), dan keaktifan organisasi.\nAturan ketat untuk Label:\n- Aman: Performa sangat baik. Biasanya IPK > 3.00, Kehadiran > 80%, dan Tugas Terkumpul > 85%.\n- Waspada: Performa sedang. IPK di kisaran 2.50 - 3.00, atau Kehadiran mulai turun ke 70-80%.\n- Berisiko: Performa buruk. IPK < 2.50, Kehadiran < 70%, atau banyak tugas yang tidak terkumpul.\nJawab HANYA dengan satu kata: Aman, Waspada, atau Berisiko.",
+  "few_shot": [
+    {
+      "data": {
+        "ipk": 3.65,
+        "kehadiran": 72,
+        "jam_belajar": 10,
+        "tugas_terkumpul": 84,
+        "nilai_uts": 100,
+        "aktif_organisasi": "Ya"
+      },
+      "label": "Aman"
+    },
+    {
+      "data": {
+        "ipk": 4.0,
+        "kehadiran": 70,
+        "jam_belajar": 14,
+        "tugas_terkumpul": 100,
+        "nilai_uts": 98,
+        "aktif_organisasi": "Tidak"
+      },
+      "label": "Aman"
+    },
+    {
+      "data": {
+        "ipk": 2.0,
+        "kehadiran": 83,
+        "jam_belajar": 9,
+        "tugas_terkumpul": 64,
+        "nilai_uts": 44,
+        "aktif_organisasi": "Ya"
+      },
+      "label": "Berisiko"
+    },
+    {
+      "data": {
+        "ipk": 2.49,
+        "kehadiran": 90,
+        "jam_belajar": 4,
+        "tugas_terkumpul": 65,
+        "nilai_uts": 61,
+        "aktif_organisasi": "Tidak"
+      },
+      "label": "Berisiko"
+    },
+    {
+      "data": {
+        "ipk": 2.77,
+        "kehadiran": 82,
+        "jam_belajar": 5,
+        "tugas_terkumpul": 71,
+        "nilai_uts": 84,
+        "aktif_organisasi": "Ya"
+      },
+      "label": "Waspada"
+    },
+    {
+      "data": {
+        "ipk": 3.03,
+        "kehadiran": 92,
+        "jam_belajar": 6,
+        "tugas_terkumpul": 86,
+        "nilai_uts": 53,
+        "aktif_organisasi": "Ya"
+      },
+      "label": "Waspada"
+    }
+  ],
+  "evaluasi": {
+    "accuracy": 0.52,
+    "f1_macro": 0.5254,
+    "invalid": 0,
+    "n": 200,
+    "dataset": "dataset_status_akademik.csv (bagian test)",
+    "tanggal": "2026-10-27"
+  }
+}
